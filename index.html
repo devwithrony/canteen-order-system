@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Order System</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Canteen Order System</h1>
+        </header>
+
+        <!-- main layout -->
+        <section id="layout" class="layout">
+            <div class="menu">
+                <h2>Menu</h2>
+
+                <div class="menu-list"></div>
+            </div>
+            <div class="order">
+                <h2>Order's</h2>
+
+                <div class="order-list">
+
+                </div>
+
+                <div class="total">
+                    <span>Total</span>
+                    <span id="total-bill">TK 1000</span>
+                </div>
+
+                <button class="confirm-btn">Confirm</button>
+            </div>
+        </section>
+
+        <!-- token layout -->
+        <section id="token-layout">
+            <div class="token">
+                <h2>ORDER TOKEN</h2>
+
+                <h3>Token: <span id="random-token">#7453</span></h3>
+
+                <div>
+                    <h4>Name: <span id="customer-name"></span></h4>
+                    <h4>Phone: <span id="phone"></span></h4>
+                </div>
+
+                <div class="confirm-order-list">
+
+                </div>
+
+                <div class="total">
+                    <span>Total</span>
+                    <span id="confirm-total-bill">TK 1000</span>
+                </div>
+
+                <button class="new-order">New Order</button>
+            </div>
+
+
+        </section>
+    </main>
+
+
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

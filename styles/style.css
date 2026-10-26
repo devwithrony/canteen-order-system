@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    background-color: green;
+    padding: 20px 40px;
+    text-align: center;
+    color: white;
+}
+
+.layout {
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.layout .menu {
+    width: 70%;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: gainsboro;
+}
+
+.layout .order {
+    width: 30%;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: gainsboro;
+}
+
+.menu-list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.menu-card {
+    width: 23%;
+    border: 1px solid grey;
+    padding: 20px;
+    text-align: center;
+    background-color: bisque;
+    border-radius: 8px;
+}
+
+.menu-card h3 {
+    font-size: 30px;
+}
+
+.menu-card h4 {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.menu-card h5 {
+    color: green;
+    margin-bottom: 10px;
+}
+
+.menu-card button {
+    width: 100%;
+    padding: 7px;
+    border-radius: 8px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+.order .order-list,
+#token-layout .confirm-order-list{
+    margin-top: 10px;
+}
+
+.total{
+    padding: 10px 0;
+    margin-top: 10px;
+    border-top: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order .confirm-btn{
+    background-color: green;
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.order .order-card, #token-layout .order-card{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+/* .layout{
+    display: none;
+} */
+
+#token-layout{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+#token-layout{
+    display: none;
+}
+
+.token{
+    min-width: 320px;
+    padding: 16px;
+    border: 2px dashed black;
+    margin-top: 10px;
+}
+
+.token .new-order{
+    width: 100%;
+    padding: 7px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 255, 0.692);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
