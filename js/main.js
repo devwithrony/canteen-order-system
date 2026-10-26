@@ -1,3 +1,4 @@
+// canteen store menus
 const menu = [
     { id: 1, name: "Biryani", price: 120, image: "🍛" },
     { id: 2, name: "Burger", price: 90, image: "🍔" },
