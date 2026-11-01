@@ -141,8 +141,18 @@ const renderOrderList = () => {
 }
 
 confirmBtn.addEventListener("click", () => {
+    if(cart.length == 0){
+        alert("Empty Cart")
+        return
+    }
     let c_name = prompt("Enter Your Name")
     let phone_number = prompt("Enter Your Phone Number")
+
+
+    if(!c_name || !phone_number){
+        alert("Enter how are you!!!!!")
+        return
+    }
 
     let token = generate6DigitString()
 
