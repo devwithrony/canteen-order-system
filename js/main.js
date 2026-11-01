@@ -1,3 +1,4 @@
+const LOCAL_STORAGE_KEY = "canteenorders"
 // canteen store menus
 const menu = [
     { id: 1, name: "Biryani", price: 120, image: "🍛" },
@@ -28,6 +29,31 @@ const customerName = document.getElementById("customer-name")
 const phone = document.getElementById("phone")
 const newOrderBtn = document.querySelector(".new-order")
 
+const listSection = document.getElementById("list-section")
+const tbody = document.getElementById("tbody")
+
+const storeData = (data) => {
+    let prevData = readStoreData()
+
+    // Fallback to an empty array if prevData is null, undefined, or not an array
+    let validPrevData = Array.isArray(prevData) ? prevData : [];
+    let newArr = [...validPrevData, data]
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newArr))
+}
+
+const readStoreData = () => {
+    let raw = localStorage.getItem(LOCAL_STORAGE_KEY) ? localStorage.getItem(LOCAL_STORAGE_KEY) : []
+    // console.log(raw);
+    if (raw.length == 0) {
+        return raw
+    } else {
+        let data = JSON.parse(raw)
+        // console.log(data);
+
+        return data
+    }
+}
+
 const renderMenu = () => {
     let html = ""
 
@@ -56,7 +82,7 @@ const addItem = (id) => {
         }
     }
 
-    console.log(cart);
+    // console.log(cart);
 
     renderCartItens()
     calculateBill()
@@ -81,7 +107,7 @@ const renderCartItens = () => {
 
     } else {
         orderList.innerHTML = `<p>No order</p>`
-     c_orderList.innerHTML = `<p>No order</p>`
+        c_orderList.innerHTML = `<p>No order</p>`
     }
 }
 
@@ -93,6 +119,25 @@ const calculateBill = () => {
     totalBill.innerHTML = `TK ${total}`
     c_totalBill.innerHTML = `TK ${total}`
 
+    return total
+}
+
+const renderOrderList = () => {
+    let prevData = readStoreData()
+
+    // Fallback to an empty array if prevData is null, undefined, or not an array
+    let validPrevData = Array.isArray(prevData) ? prevData : [];
+    let html = ""
+    validPrevData.map((data) => {
+        html += `  <tr>
+                        <td>${data.name}</td>
+                        <td>${data.phone}</td>
+                        <td>${data.total}</td>
+                        <td>${data.time}</td>
+                    </tr>`
+    })
+
+    tbody.innerHTML = html
 }
 
 confirmBtn.addEventListener("click", () => {
@@ -107,18 +152,37 @@ confirmBtn.addEventListener("click", () => {
     phone.innerHTML = phone_number
 
     mainLayout.style.display = "none"
+    listSection.style.display = "none"
     tokenLayout.style.display = "flex"
+
+    let total = calculateBill()
+
+    const d = new Date();
+    let date = d.toLocaleString();
+
+    let newOrder = {
+        name: c_name,
+        phone: phone_number,
+        total,
+        time: date
+    }
+
+    // let stringify = JSON.stringify(newOrder)
+
+    storeData(newOrder)
 
     renderCartItens()
     calculateBill()
+    renderOrderList()
 
 })
 newOrderBtn.addEventListener("click", () => {
     cart = []
-        renderCartItens()
+    renderCartItens()
     calculateBill()
 
-    mainLayout.style.display ="flex"
+    mainLayout.style.display = "flex"
+    listSection.style.display = "initial"
     tokenLayout.style.display = "none"
 })
 
@@ -130,3 +194,7 @@ renderMenu()
 renderCartItens()
 
 calculateBill()
+
+readStoreData()
+
+renderOrderList()
