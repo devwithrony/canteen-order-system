@@ -34,6 +34,10 @@ header {
     justify-content: space-between;
 }
 
+.list-section{
+      padding: 30px;
+}
+
 .layout .menu {
     width: 70%;
     padding: 16px;
